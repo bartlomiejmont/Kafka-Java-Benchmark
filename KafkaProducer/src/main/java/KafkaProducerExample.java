@@ -15,7 +15,7 @@ public class KafkaProducerExample {
 
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
-    private final static int messagesCount = 100;
+    private final static int messagesCount = 1000;
 
     private static Producer<Long, String> createProducer() {
         Properties props = new Properties();
@@ -36,7 +36,7 @@ public class KafkaProducerExample {
         try {
             for (long index = time; index < time + sendMessageCount; index++) {
                 final ProducerRecord<Long, String> record =
-                        new ProducerRecord<>(TOPIC, index,
+                        new ProducerRecord<>(TOPIC,System.currentTimeMillis(),
                                 "ID: " + index);
 
                 RecordMetadata metadata = producer.send(record).get();
