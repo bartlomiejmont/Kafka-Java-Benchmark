@@ -36,7 +36,7 @@ public class KafkaProducerExample {
         try {
             for (long index = time; index < time + sendMessageCount; index++) {
                 final ProducerRecord<Long, String> record =
-                        new ProducerRecord<>(TOPIC,System.currentTimeMillis(),
+                        new ProducerRecord<>(TOPIC,index,
                                 "ID: " + index);
 
                 RecordMetadata metadata = producer.send(record).get();

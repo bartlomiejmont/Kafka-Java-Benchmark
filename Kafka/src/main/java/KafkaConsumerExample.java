@@ -46,9 +46,10 @@ public class KafkaConsumerExample {
                 else continue;
             }
             consumerRecords.forEach(record -> {
-                System.out.printf("Consumer Record:(Value: %s,Partition: %d,Offset: %d Time: %d ms)\n",
+                Long time = System.currentTimeMillis();
+                System.out.printf("Consumer Record:(%s,Partition: %d,Offset: %d Time: %d ms)\n",
                         record.value(),
-                        record.partition(), record.offset(), System.currentTimeMillis()-record.key());
+                        record.partition(), record.offset(), time-record.timestamp());
                 if (record.value().equals("STOP")){
                     consumer.close();
                 }

@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b222da8-3f29-4f23-ae6a-2039ec384bb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../KafkaProducer/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kafka.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/KafkaConsumerExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/KafkaConsumerExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KafkaProducer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KafkaProducer/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KafkaProducer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KafkaProducer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KafkaProducer/KafkaProducer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KafkaConsumerExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KafkaConsumerExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KafkaProducer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KafkaProducer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../KafkaProducer/src/main/java/KafkaProducerExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../KafkaProducer/src/main/java/KafkaProducerExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KafkaProducer/target/classes/KafkaProducerExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/../KafkaProducer/target/classes/KafkaProducerExample.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            <state relative-caret-position="194">
+              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -36,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/KafkaConsumerExample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="328">
+              <caret line="50" column="106" selection-start-line="50" selection-start-column="106" selection-end-line="50" selection-end-column="106" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,6 +139,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="961" height="1055" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21139102" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -178,15 +172,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+        <state relative-caret-position="194">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/KafkaConsumerExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        <state relative-caret-position="328">
+          <caret line="50" column="106" selection-start-line="50" selection-start-column="106" selection-end-line="50" selection-end-column="106" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
