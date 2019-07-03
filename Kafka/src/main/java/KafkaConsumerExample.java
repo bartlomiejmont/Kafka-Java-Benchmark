@@ -4,6 +4,7 @@ import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import java.util.Collections;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class KafkaConsumerExample {
 
@@ -37,9 +38,10 @@ public class KafkaConsumerExample {
     static void runConsumer() throws InterruptedException {
         final Consumer<Long, String> consumer = createConsumer();
         final int giveUp = 100;   int noRecordsCount = 0;
+        AtomicInteger timeSum = new AtomicInteger(0);
         while (true) {
             final ConsumerRecords<Long, String> consumerRecords =
-                    consumer.poll(1000);
+                    consumer.poll(10000);
             if (consumerRecords.count()==0) {
                 noRecordsCount++;
                 if (noRecordsCount > giveUp) break;
@@ -47,10 +49,13 @@ public class KafkaConsumerExample {
             }
             consumerRecords.forEach(record -> {
                 Long time = System.currentTimeMillis();
+                timeSum.set(timeSum.get()+(int)(time-record.timestamp()));
                 System.out.printf("Consumer Record:(%s,Partition: %d,Offset: %d Time: %d ms)\n",
                         record.value(),
                         record.partition(), record.offset(), time-record.timestamp());
                 if (record.value().equals("STOP")){
+                    System.out.printf("Total Time: %.2f s \n",timeSum.floatValue()/1000);
+                    System.out.printf("Avg Time: %d ms \n",timeSum.intValue()/1000);
                     consumer.close();
                 }
             });
@@ -59,6 +64,7 @@ public class KafkaConsumerExample {
         }
         consumer.close();
         System.out.println("DONE");
+        System.out.printf("Avg Time: %d ms \n",timeSum.intValue()/100);
     }
 
 }

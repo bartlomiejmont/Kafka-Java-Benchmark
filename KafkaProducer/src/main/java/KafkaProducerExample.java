@@ -26,6 +26,7 @@ public class KafkaProducerExample {
                 LongSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
+        props.put("linger.ms",2);
         return new KafkaProducer<>(props);
     }
 
