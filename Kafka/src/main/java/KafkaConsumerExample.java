@@ -72,6 +72,7 @@ public class KafkaConsumerExample {
             consumerRecords.forEach(record -> {
                 times.add(System.currentTimeMillis());
                 records.add(record.timestamp());
+                delay.add(currentTimeMillis()-record.timestamp());
 
 //                timeSum.set(timeSum.get()+(int)(time-record.timestamp()));
 //                System.out.printf("Consumer Record:(%s,Partition: %d,Offset: %d Time: %d ms)\n",
@@ -82,11 +83,11 @@ public class KafkaConsumerExample {
 //                    System.out.printf("Avg Time: %d ms \n",timeSum.intValue()/1000);
                       Long time1 = times.get(0);
                       Long time2 = System.currentTimeMillis();
-                    final int i = showResults(times);
+                    final int i = showResults(delay);
                     System.out.printf("Time ms: %.2f ms\n", ((double)time2-(double)time1));
                     final Long firstToLast = (records.get(i-1)-records.get(0));
                     System.out.printf("Time from first to last message: %d ms\n",firstToLast);
-                    System.out.printf("msg/s: %d\n",i/(firstToLast)*1000);
+                    System.out.printf("msg/s: %.2f \n",((float)i/(float)firstToLast)*1000);
                     //Double average = times.stream().mapToDouble(val -> val).average().orElse(0.0);
                     //System.out.printf("Average: %.3f ", average);
                     consumer.close();
