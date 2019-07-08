@@ -15,7 +15,7 @@ public class KafkaProducerExample {
 
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
-    private final static int messagesCount = 1000;
+    private final static int messagesCount = 10000;
 
     private static Producer<Long, String> createProducer() {
         Properties props = new Properties();
@@ -26,7 +26,8 @@ public class KafkaProducerExample {
                 LongSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
-        props.put("linger.ms",2);
+        props.put("linger.ms",0);
+        props.put("fetch.wait.max.m", 10);
         return new KafkaProducer<>(props);
     }
 
@@ -43,11 +44,12 @@ public class KafkaProducerExample {
                 RecordMetadata metadata = producer.send(record).get();
 
                 //long elapsedTime = System.currentTimeMillis() - time;
-                System.out.printf("sent record(key=%s value=%s) " +
-                                "meta(partition=%d, offset=%d) \n",
-                        record.key(), record.value(), metadata.partition(),
-                        metadata.offset());
-            }
+//                System.out.printf("sent record(key=%s value=%s) " +
+//                                "meta(partition=%d, offset=%d) \n",
+//                        record.key(), record.value(), metadata.partition(),
+//                        metadata.offset());
+                //Thread.sleep(10);
+                }
         } finally {
 
             //Force consumer to stop listening
