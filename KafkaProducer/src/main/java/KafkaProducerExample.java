@@ -15,7 +15,7 @@ public class KafkaProducerExample {
 
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
-    private final static int messagesCount = 10000;
+    private final static int messagesCount = 1000;
 
     private static Producer<Long, String> createProducer() {
         Properties props = new Properties();
@@ -26,8 +26,8 @@ public class KafkaProducerExample {
                 LongSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
-        props.put("linger.ms",0);
-        props.put("fetch.wait.max.m", 10);
+        props.put("linger.ms",5);
+//        props.put("fetch.wait.max.m", 10);
         return new KafkaProducer<>(props);
     }
 
@@ -61,7 +61,8 @@ public class KafkaProducerExample {
 
             long elapsedTime = System.currentTimeMillis() - time;
             System.out.printf("Sent %d messages in %.2f seconds\n",messagesCount,(float)elapsedTime/1000);
-            producer.flush();
+            System.out.printf("Messages per seconds: %.8f msg/s", ((float)messagesCount/(float)elapsedTime)*1000);
+           // producer.flush();
             producer.close();
         }
     }

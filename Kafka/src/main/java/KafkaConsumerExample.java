@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.out;
@@ -20,7 +19,6 @@ public class KafkaConsumerExample {
 
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
-    Long timeStart = System.currentTimeMillis();
 
     private static Consumer<Long, String> createConsumer() {
         final Properties props = new Properties();
@@ -43,11 +41,21 @@ public class KafkaConsumerExample {
         return consumer;
     }
 
+    static private int showResults(List<Long> times){
+        int i=0;
+        for (Long t:times) {
+            System.out.printf("ts: %d  nr: %d \n",t,i);
+            i++;
+        }
+        return i;
+    }
+
     static void runConsumer() throws InterruptedException {
         final Consumer<Long, String> consumer = createConsumer();
         final int giveUp = 100;   int noRecordsCount = 0;
-        AtomicInteger i = new AtomicInteger(0);
         List<Long> times = new ArrayList<Long>();
+        List<Long> records = new ArrayList<Long>();
+        List<Long> delay = new ArrayList<Long>();
 
         System.out.println("Consumer Starts!!!");
 
@@ -62,7 +70,8 @@ public class KafkaConsumerExample {
 
 
             consumerRecords.forEach(record -> {
-//                times.add(System.currentTimeMillis()-record.timestamp());
+                times.add(System.currentTimeMillis());
+                records.add(record.timestamp());
 
 //                timeSum.set(timeSum.get()+(int)(time-record.timestamp()));
 //                System.out.printf("Consumer Record:(%s,Partition: %d,Offset: %d Time: %d ms)\n",
@@ -73,11 +82,11 @@ public class KafkaConsumerExample {
 //                    System.out.printf("Avg Time: %d ms \n",timeSum.intValue()/1000);
                       Long time1 = times.get(0);
                       Long time2 = System.currentTimeMillis();
-                      System.out.printf("Time1: %d ns Time2: %d ns Time ms: %.2f ms\n",time1,time2, ((double)time2-(double)time1));
-//                    for (Long t:times) {
-//                    System.out.printf("ts: %d  nr: %d \n",t,i.get());
-//                    i.set(i.get()+1);
-//                    }
+                    final int i = showResults(times);
+                    System.out.printf("Time ms: %.2f ms\n", ((double)time2-(double)time1));
+                    final Long firstToLast = (records.get(i-1)-records.get(0));
+                    System.out.printf("Time from first to last message: %d ms\n",firstToLast);
+                    System.out.printf("msg/s: %d\n",i/(firstToLast)*1000);
                     //Double average = times.stream().mapToDouble(val -> val).average().orElse(0.0);
                     //System.out.printf("Average: %.3f ", average);
                     consumer.close();
