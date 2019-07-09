@@ -31,7 +31,7 @@ public class KafkaConsumerExample {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class.getName());
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest");
-        props.put("fetch.wait.max.ms",2);
+        props.put("fetch.wait.max.ms",0);
         // Create the consumer using props.
         final Consumer<Long, String> consumer =
                 new KafkaConsumer<>(props);
